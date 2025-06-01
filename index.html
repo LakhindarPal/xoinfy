@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Infinite Tic-Tac-Toe | Fun 3-Move Strategy Game</title>
+  <meta name="description" content="Play Infinite Tic-Tac-Toe with a unique twist: each player keeps only their last 3 moves. Challenge your strategy and never draw!" />
+  <meta name="keywords" content="tic tac toe, infinite tic tac toe, strategy game, online tic tac toe" />
+  <meta name="author" content="Lakhindar Pal" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <main class="container" role="main" aria-label="Infinite Tic-Tac-Toe game">
+    <h1>Infinite Tic-Tac-Toe</h1>
+    
+    <section id="board" class="board" role="grid" aria-label="Game board" aria-live="polite">
+      <button class="cell" data-index="0" role="gridcell" aria-label="Cell 1"></button>
+      <button class="cell" data-index="1" role="gridcell" aria-label="Cell 2"></button>
+      <button class="cell" data-index="2" role="gridcell" aria-label="Cell 3"></button>
+      <button class="cell" data-index="3" role="gridcell" aria-label="Cell 4"></button>
+      <button class="cell" data-index="4" role="gridcell" aria-label="Cell 5"></button>
+      <button class="cell" data-index="5" role="gridcell" aria-label="Cell 6"></button>
+      <button class="cell" data-index="6" role="gridcell" aria-label="Cell 7"></button>
+      <button class="cell" data-index="7" role="gridcell" aria-label="Cell 8"></button>
+      <button class="cell" data-index="8" role="gridcell" aria-label="Cell 9"></button>
+      <div id="strike" class="strike"></div>
+    </section>
+    
+    <section class="info" aria-live="polite" aria-atomic="true">
+      <p id="turn" class="turn">Turn: <span id="playerTurn">X</span></p>
+      <button id="restart" aria-label="Restart game">Restart</button>
+      <div class="mode-selector">
+        <label for="modeSelect">Game Mode:</label>
+        <select id="modeSelect">
+          <option value="single">Single</option>
+          <option value="multi" selected>Mingle</option>
+        </select>
+      </div>
+      <p id="result" class="result" role="alert" aria-live="assertive"></p>
+    </section>
+  </main>
+</body>
+
+</html>

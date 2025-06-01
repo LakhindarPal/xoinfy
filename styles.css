@@ -1,0 +1,279 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(145deg, #1f1c2c, #928dab);
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  background: rgba(30, 30, 40, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  animation: fadeIn 0.8s ease;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 1.5rem 0;
+  user-select: none;
+  position: relative;
+}
+
+.cell {
+  background: #2c2f3a;
+  border-radius: 18px;
+  height: 95px;
+  font-size: 2.4rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, background 0.3s;
+  outline-offset: 3px;
+  color: #ffffff;
+}
+
+.cell:focus-visible {
+  outline: 3px solid #00bcd4;
+}
+
+.cell:hover:not(.used) {
+  background: #3a3f50;
+  transform: scale(1.07);
+}
+
+.cell.used {
+  cursor: default;
+  color: #aaa;
+  background-color: #1c1c24;
+}
+
+.cell.pop {
+  animation: popIn 0.25s ease forwards;
+}
+
+.cell.removed {
+  animation: fadeOutMark 0.3s forwards;
+}
+
+.info {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+}
+
+.turn {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+#restart {
+  background-color: #00bcd4;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+#restart:hover,
+#restart:focus-visible {
+  background-color: #008c9e;
+  outline: none;
+}
+
+.mode-selector select {
+  background: #2a2d3b;
+  color: #eee;
+  font-size: 1rem;
+  padding: 8px 36px 8px 12px;
+  border: 1.5px solid #00bcd4;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.mode-selector select:hover,
+.mode-selector select:focus {
+  border-color: #00e676;
+  background-color: #3a3f50;
+  outline: none;
+}
+
+.result {
+  margin-top: 1.4rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+  min-height: 1.4em;
+  color: #00e676;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOutMark {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 450px) {
+  .container {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+  
+  .cell {
+    height: 75px;
+    font-size: 2rem;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Base */
+.strike {
+  position: absolute;
+  background-color: #00e676;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Horizontal lines */
+.strike-0 {
+  top: 16.66%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  transform-origin: left center;
+  transform: scaleX(1);
+}
+
+.strike-1 {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  transform-origin: left center;
+  transform: scaleX(1);
+}
+
+.strike-2 {
+  top: 83.33%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  transform-origin: left center;
+  transform: scaleX(1);
+}
+
+/* Vertical lines */
+.strike-3 {
+  top: 0;
+  left: calc(16.66% + 6px);
+  width: 6px;
+  height: 100%;
+  transform-origin: center;
+  transform: scaleY(1);
+}
+
+.strike-4 {
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 100%;
+  transform-origin: center;
+  transform: scaleY(1);
+}
+
+.strike-5 {
+  top: 0;
+  left: calc(83.33% - 6px);
+  width: 6px;
+  height: 100%;
+  transform-origin: center;
+  transform: scaleY(1);
+}
+
+/* Diagonal lines */
+.strike-6 {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  transform-origin: center;
+  transform: rotate(45deg) scaleX(1);
+}
+
+.strike-7 {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  transform-origin: center;
+  transform: rotate(-45deg) scaleX(1);
+}
