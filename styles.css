@@ -143,6 +143,78 @@ h1 {
   animation: fadeIn 0.4s ease-in;
 }
 
+/* Base strike */
+.strike {
+  position: absolute;
+  background-color: #00e676;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Horizontal strike */
+.strike-0,
+.strike-1,
+.strike-2 {
+  left: 0;
+  width: 100%;
+  height: 6px;
+  transform-origin: left center;
+}
+
+.strike-0 {
+  top: 16.66%;
+}
+
+.strike-1 {
+  top: 50%;
+}
+
+.strike-2 {
+  top: 83.33%;
+}
+
+/* Vertical strike */
+.strike-3,
+.strike-4,
+.strike-5 {
+  top: 0;
+  width: 6px;
+  height: 100%;
+  transform-origin: center;
+}
+
+.strike-3 {
+  left: 16.66%;
+}
+
+.strike-4 {
+  left: 50%;
+}
+
+.strike-5 {
+  left: 83.33%;
+}
+
+/* Diagonal strike */
+.strike-6,
+.strike-7 {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  transform-origin: center;
+}
+
+.strike-6 {
+  transform: rotate(45deg) scaleX(1);
+}
+
+.strike-7 {
+  transform: rotate(-45deg) scaleX(1);
+}
+
 @keyframes popIn {
   0% {
     opacity: 0;
@@ -191,89 +263,4 @@ h1 {
   h1 {
     font-size: 1.6rem;
   }
-}
-
-/* Base */
-.strike {
-  position: absolute;
-  background-color: #00e676;
-  border-radius: 4px;
-  pointer-events: none;
-  z-index: 5;
-  transition: transform 0.4s ease-in-out;
-}
-
-/* Horizontal lines */
-.strike-0 {
-  top: 16.66%;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  transform-origin: left center;
-  transform: scaleX(1);
-}
-
-.strike-1 {
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  transform-origin: left center;
-  transform: scaleX(1);
-}
-
-.strike-2 {
-  top: 83.33%;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  transform-origin: left center;
-  transform: scaleX(1);
-}
-
-/* Vertical lines */
-.strike-3 {
-  top: 0;
-  left: calc(16.66% + 6px);
-  width: 6px;
-  height: 100%;
-  transform-origin: center;
-  transform: scaleY(1);
-}
-
-.strike-4 {
-  top: 0;
-  left: 50%;
-  width: 6px;
-  height: 100%;
-  transform-origin: center;
-  transform: scaleY(1);
-}
-
-.strike-5 {
-  top: 0;
-  left: calc(83.33% - 6px);
-  width: 6px;
-  height: 100%;
-  transform-origin: center;
-  transform: scaleY(1);
-}
-
-/* Diagonal lines */
-.strike-6 {
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  transform-origin: center;
-  transform: rotate(45deg) scaleX(1);
-}
-
-.strike-7 {
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  transform-origin: center;
-  transform: rotate(-45deg) scaleX(1);
 }
