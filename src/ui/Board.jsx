@@ -12,13 +12,13 @@ const Board = ({
     <div className="relative mb-8">
       <div
         ref={boardRef}
-        className="relative grid grid-cols-3 gap-2 rounded-xl bg-gray-700 p-4"
+        className="shadow-inner-lg relative grid grid-cols-3 gap-3 rounded-2xl bg-gray-900/60 p-5"
       >
         {board.map((cell, index) => (
           <button
             key={index}
             onClick={() => handleCellClick(index)}
-            className={`flex aspect-square transform items-center justify-center rounded-lg border-2 border-transparent bg-gray-600 text-4xl font-bold shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-500 hover:shadow-lg ${cell === "X" ? "border-cyan-400/30 text-cyan-400" : cell === "O" ? "border-pink-400/30 text-pink-400" : ""} ${animatingCells[index] === "add" ? "animate-cell-add" : ""} ${animatingCells[index] === "remove" ? "animate-cell-remove" : ""} ${!cell && !winner ? "cursor-pointer hover:border-gray-400/50 hover:bg-gray-500" : ""} ${winner || (gameMode === "singleplayer" && !isXNext) ? "cursor-not-allowed" : ""} `}
+            className={`flex aspect-square items-center justify-center rounded-lg border-2 bg-gray-800 text-5xl font-extrabold shadow-xl transition-all duration-300 ease-out ${cell === "X" ? "border-cyan-500/40 text-cyan-400" : cell === "O" ? "border-fuchsia-500/40 text-fuchsia-400" : "border-gray-700/50 text-transparent"} ${!cell && !winner ? "cursor-pointer hover:scale-102 hover:bg-gray-700/70 hover:shadow-2xl" : ""} ${winner || (gameMode === "singleplayer" && !isXNext) ? "cursor-not-allowed opacity-70" : ""} ${animatingCells[index] === "add" ? "animate-cell-add" : ""} ${animatingCells[index] === "remove" ? "animate-cell-remove" : ""} `}
             disabled={winner || (gameMode === "singleplayer" && !isXNext)}
           >
             <span
@@ -37,7 +37,7 @@ const Board = ({
 
         {winner && (
           <div
-            className="animate-strike-line absolute rounded-full bg-emerald-400 shadow-lg"
+            className="animate-strike-line absolute"
             style={getStrikeLineStyle()}
           />
         )}

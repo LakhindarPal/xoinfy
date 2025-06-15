@@ -25,6 +25,12 @@
 
 ---
 
+## 📸 Preview
+
+**[https://xoinfy.netlify.app](https://xoinfy.netlify.app)**
+
+![Preview](preview.png)
+
 ## 🚀 Tech Stack
 
 - **Frontend:** React + Vite
@@ -59,13 +65,7 @@ npm run build
 
 ---
 
-📸 Screenshots
-
-![Preview](preview.png)
-
----
-
-🤝 Contributing
+## 🤝 Contributing
 
 Have ideas or found a bug?
 PRs, Issues, and Stars are always welcome!
@@ -78,6 +78,6 @@ PRs, Issues, and Stars are always welcome!
 
 ---
 
-📄 License
+## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).

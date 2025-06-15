@@ -186,53 +186,63 @@ function TicTacToe() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 p-4">
-      <div className="w-full max-w-md rounded-2xl border border-gray-700 bg-gray-800 p-8 shadow-2xl">
+      <div className="w-full max-w-md rounded-3xl border border-gray-700/50 bg-gradient-to-br from-gray-800 to-gray-900 p-8 shadow-2xl backdrop-blur-sm">
         <div className="mb-8 text-center">
-          <h1 className="mb-2 text-4xl font-bold text-white">XO Infinite</h1>
-          <p className="mb-4 text-sm text-balance text-gray-300">
-            Each player can only have 3 pieces on the board!
-          </p>
-
-          <div className="mb-4">
+          <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-white">
+            XO Infinite
+          </h1>
+          <div className="mb-6 flex justify-center rounded-lg bg-gray-700/50 p-1 shadow-inner">
             <button
-              type="button"
               onClick={() => {
                 setGameMode("multiplayer");
                 resetGame();
               }}
-              className={`rounded-l-lg px-4 py-2 font-semibold transition-colors duration-200 ${gameMode === "multiplayer" ? "bg-indigo-600 text-white" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}
+              className={`flex-1 rounded-lg px-4 py-3 font-semibold transition-all duration-300 ${gameMode === "multiplayer" ? "bg-indigo-600 text-white shadow-md" : "text-gray-300 hover:bg-gray-600/50 hover:text-white"}`}
             >
               2 Players
             </button>
             <button
-              type="button"
               onClick={() => {
                 setGameMode("singleplayer");
                 resetGame();
               }}
-              className={`rounded-r-lg px-4 py-2 font-semibold transition-colors duration-200 ${gameMode === "singleplayer" ? "bg-indigo-600 text-white" : "bg-gray-700 text-gray-300 hover:bg-gray-600"}`}
+              className={`flex-1 rounded-lg px-4 py-3 font-semibold transition-all duration-300 ${gameMode === "singleplayer" ? "bg-indigo-600 text-white shadow-md" : "text-gray-300 hover:bg-gray-600/50 hover:text-white"}`}
             >
               Vs. AI
             </button>
           </div>
 
           {winner ? (
-            <div className="mb-4 text-2xl font-bold text-emerald-400">
+            <div className="animate-pulse-once mb-4 text-3xl font-bold text-emerald-400">
               {gameMode === "singleplayer"
                 ? winner === "X"
-                  ? "You "
-                  : "AI "
-                : `Player ${winner} `}
-              Won! 🎉
+                  ? "You"
+                  : "AI"
+                : `Player ${winner}`}{" "}
+              Won!
+              <span role="img" aria-label="party popper">
+                🎉
+              </span>
             </div>
           ) : (
-            <div className="text-xl font-semibold text-gray-100">
-              Current Player:{" "}
-              <span
-                className={`${isXNext ? "text-cyan-400" : "text-pink-400"}`}
-              >
-                {isXNext ? "X" : "O"}
-              </span>
+            <div className="text-2xl font-semibold text-gray-200">
+              {gameMode === "singleplayer" ? (
+                isXNext ? (
+                  <span className="animate-fade-in-out text-cyan-400">
+                    Your Turn (X)
+                  </span>
+                ) : (
+                  <span className="animate-fade-in-out text-fuchsia-400">
+                    AI's Turn (O)
+                  </span>
+                )
+              ) : (
+                <span
+                  className={`${isXNext ? "text-cyan-400" : "text-fuchsia-400"} animate-fade-in-out`}
+                >
+                  Player {isXNext ? "X" : "O"}'s Turn
+                </span>
+              )}
             </div>
           )}
         </div>
@@ -249,22 +259,27 @@ function TicTacToe() {
         />
 
         <button
-          type="button"
           onClick={resetGame}
-          className="w-full transform rounded-xl bg-gradient-to-r from-cyan-600 to-pink-600 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-200 hover:scale-105 hover:from-cyan-700 hover:to-pink-700"
+          className="focus:ring-opacity-50 mt-8 w-full transform rounded-xl bg-gradient-to-br from-indigo-600 to-purple-700 px-6 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:from-indigo-700 hover:to-purple-800 hover:shadow-xl focus:ring-4 focus:ring-indigo-500 focus:outline-none"
         >
-          New Game
+          Start New Game
         </button>
 
-        <div className="mt-6 rounded-lg bg-gray-700 p-4 text-xs text-gray-300">
-          <h3 className="mb-2 font-semibold text-white">Game Rules:</h3>
-          <ul className="list-disc space-y-1 pl-4">
-            <li>Each player can have maximum 3 pieces on the board</li>
+        <div className="mt-8 rounded-xl border border-gray-600/30 bg-gray-700/40 p-5 text-xs text-gray-400">
+          <h3 className="mb-3 text-lg font-bold text-white">Game Rules:</h3>
+          <ul className="space-y-2 leading-relaxed">
             <li>
-              After 3 moves, your oldest piece disappears when you place a new
-              one
+              • Each player can only have a maximum of 3 pieces on the board at
+              any given time.
             </li>
-            <li>First to get 3 in a row wins!</li>
+            <li>
+              • After placing 3 pieces, your oldest piece will disappear when
+              you place a new one.
+            </li>
+            <li>
+              • The first player to get 3 of their pieces in a row
+              (horizontally, vertically, or diagonally) wins!
+            </li>
           </ul>
         </div>
       </div>
