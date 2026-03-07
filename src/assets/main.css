@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-navy-dark: #1a2a33;
+  --color-navy: #1f3641;
+  --color-navy-hover: #253f4b;
+  --color-navy-shadow: #10212a;
+
+  --color-silver: #a8bfc9;
+  --color-silver-hover: #dbe8ed;
+  --color-silver-shadow: #6b8997;
+
+  --color-cyan: #31c3bd;
+  --color-cyan-hover: #65e9e4;
+  --color-cyan-shadow: #118c87;
+
+  --color-yellow: #f2b137;
+  --color-yellow-hover: #ffc860;
+  --color-yellow-shadow: #cc8b13;
+}
+
+:root {
+  font-family: "Outfit", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-navy-dark);
+}
