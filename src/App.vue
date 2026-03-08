@@ -58,11 +58,11 @@ function iconForMark(mark: Mark, variant: "normal" | "win" | "outline" | "defaul
       class="mx-auto flex min-h-[calc(100dvh-4rem)] w-full max-w-115 items-center justify-center"
     >
       <div class="w-full max-w-82 sm:max-w-115">
-        <img :src="logo" alt="XO" class="mx-auto mb-8 h-8 w-18 sm:mb-10" />
+        <img :src="logo" alt="XO" width="72" height="32" class="mx-auto mb-8 h-8 w-18 sm:mb-10" />
 
         <div class="panel-shadow mb-6 rounded-[0.95rem] bg-navy p-6 text-center sm:mb-10">
           <p class="mb-2 text-base font-bold tracking-[0.06em]">PICK YOUR MARK</p>
-          <p class="mb-4 text-sm font-semibold tracking-[0.07em] text-silver/50">
+          <p class="mb-4 text-sm font-semibold tracking-[0.07em] text-silver/90">
             REMEMBER : X GOES FIRST
           </p>
 
@@ -71,6 +71,7 @@ function iconForMark(mark: Mark, variant: "normal" | "win" | "outline" | "defaul
               v-for="mark in ['x', 'o'] as const"
               :key="mark"
               type="button"
+              :aria-label="`Pick ${mark.toUpperCase()}`"
               class="group cursor-pointer rounded-[0.65rem] transition"
               :class="
                 game.myMark === mark
@@ -88,15 +89,15 @@ function iconForMark(mark: Mark, variant: "normal" | "win" | "outline" | "defaul
             </button>
           </div>
 
-          <p class="text-sm tracking-[0.07em] text-silver/50">
-            You chose
+          <p class="text-sm tracking-[0.07em] text-silver/90">
+            You picked
             <span class="font-bold text-silver">{{ game.myMark.toUpperCase() }}</span>
           </p>
 
           <div class="mt-4 rounded-[0.7rem] bg-navy-dark/65 p-4 text-left">
-            <p class="mb-2 text-xs font-bold tracking-[0.08em] text-silver/80">HOW TO PLAY</p>
+            <p class="mb-2 text-xs font-bold tracking-[0.08em] text-silver">HOW TO PLAY</p>
             <ul
-              class="space-y-1 text-xs font-medium tracking-[0.03em] text-silver/70 list-disc list-inside"
+              class="space-y-1 text-xs font-medium tracking-[0.03em] text-silver/90 list-disc list-inside"
             >
               <li>You can only have 3 marks on the board at a time.</li>
               <li>Placing a 4th mark will remove your oldest mark.</li>
@@ -130,7 +131,7 @@ function iconForMark(mark: Mark, variant: "normal" | "win" | "outline" | "defaul
     >
       <div class="w-full max-w-82 sm:max-w-115">
         <div class="mb-5 flex justify-center sm:mb-5">
-          <img :src="logo" alt="XO" class="h-8 w-18" />
+          <img :src="logo" alt="XO" width="72" height="32" class="h-8 w-18" />
         </div>
 
         <header class="mb-5 grid grid-cols-[1fr_1fr_auto] items-center gap-[0.6rem] sm:gap-5">
@@ -154,10 +155,17 @@ function iconForMark(mark: Mark, variant: "normal" | "win" | "outline" | "defaul
 
           <button
             type="button"
+            aria-label="Restart Game"
             class="btn-shadow-gray flex h-10 w-10 cursor-pointer items-center justify-center rounded-[0.6rem] bg-silver transition hover:bg-silver-hover active:translate-y-px sm:h-13 sm:w-13 sm:rounded-[0.7rem]"
             @click="openReset"
           >
-            <img :src="iconRestart" alt="Restart" class="h-4 w-4 sm:h-5 sm:w-5" />
+            <img
+              :src="iconRestart"
+              alt="Restart"
+              width="20"
+              height="20"
+              class="h-4 w-4 sm:h-5 sm:w-5"
+            />
           </button>
         </header>
 
@@ -166,6 +174,7 @@ function iconForMark(mark: Mark, variant: "normal" | "win" | "outline" | "defaul
             v-for="(_, index) in game.board"
             :key="index"
             type="button"
+            :aria-label="`Play cell ${index}`"
             class="panel-shadow relative h-24 rounded-[0.95rem] bg-navy transition sm:h-35"
             :class="[
               game.board[index] === null && canPreview
